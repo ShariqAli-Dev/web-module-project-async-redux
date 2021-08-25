@@ -7,7 +7,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { grabAxolotl } from './actions';
+import { grabCat } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ function App(props) {
         <Paper className={classes.paper}>
           <Grid container spacing={4} justifyContent='center'>
             <Grid item xs={12} md={12} lg={12} xl={12}>
-              <h1>Generate Your Own Axolotl!</h1>
+              <h1>Generate Your Own Cat!</h1>
             </Grid>
             <Grid item xs={12} md={12} lg={12} xl={12}>
               <Button
@@ -39,7 +39,7 @@ function App(props) {
                 color='secondary'
                 onClick={() => {
                   console.log('the button is being clicked');
-                  props.grabAxolotl();
+                  props.grabCat();
                 }}
               >
                 {'==> Click Me <=='}
@@ -61,4 +61,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { grabAxolotl })(App);
+export default connect(mapStateToProps, { grabCat })(App);

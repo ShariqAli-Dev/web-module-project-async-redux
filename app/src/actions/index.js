@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-export const GRAB_AXOLOTL = 'GRAB_AXOLOTL';
+export const GRAB_CAT = 'GRAB_CAT';
+export const GOT_CAT = 'GOT_CAT';
 
-export const grabAxolotl = () => (dispatch) => {
+export const grabCat = () => (dispatch) => {
   axios
-    .get(
-      'https://api.openweathermap.org/data/2.5/weather?q=alabama&appid=aa2aefc95ab3fbbaaf699eea4a115eaf'
-    )
+    .get('https://thatcopy.pw/catapi/rest/')
     .then((res) => {
       console.log(res);
     })
@@ -14,4 +13,9 @@ export const grabAxolotl = () => (dispatch) => {
       alert(`Hey man your axios call didn't work`);
       console.log(err);
     });
+};
+
+export const gotCat = (id, url) => {
+  console.log({ id, url });
+  return { type: GOT_CAT, id, url };
 };
