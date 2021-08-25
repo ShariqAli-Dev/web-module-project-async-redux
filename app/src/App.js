@@ -39,7 +39,7 @@ function App(props) {
                 color='secondary'
                 onClick={() => {
                   console.log('the button is being clicked');
-                  grabAxolotl();
+                  props.grabAxolotl();
                 }}
               >
                 {'==> Click Me <=='}
@@ -56,7 +56,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     axolotols: state.axolotols,
   };
