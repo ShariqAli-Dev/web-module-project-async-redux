@@ -1,13 +1,7 @@
-import {
-  Container,
-  makeStyles,
-  Paper,
-  Card,
-  Button,
-  Grid,
-} from '@material-ui/core';
+import { Container, makeStyles, Paper, Button, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { grabCat } from './actions';
+import CatList from './components/CatList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
 
 function App(props) {
   const classes = useStyles();
-  console.log(props.axolotols);
 
   return (
     <div className={classes.root}>
@@ -37,17 +30,12 @@ function App(props) {
               <Button
                 variant='contained'
                 color='secondary'
-                onClick={() => {
-                  console.log('the button is being clicked');
-                  props.grabCat();
-                }}
+                onClick={() => props.grabCat()}
               >
                 {'==> Click Me <=='}
               </Button>
             </Grid>
-            <Grid item xs={12} md={12} lg={12} xl={12}>
-              Testing
-            </Grid>
+            <CatList />
           </Grid>
         </Paper>
       </Container>
@@ -56,9 +44,7 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    axolotols: state.axolotols,
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, { grabCat })(App);

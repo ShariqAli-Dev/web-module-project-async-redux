@@ -1,13 +1,18 @@
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { applyMiddleware, createStore } from 'redux';
-
+import { GOT_CAT } from '../actions/index';
 const initialState = {
-  axolotols: [],
+  cats: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case GOT_CAT:
+      return {
+        state,
+        cats: [...state.cats, action.payload],
+      };
     default:
       return state;
   }

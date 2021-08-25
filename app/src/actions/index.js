@@ -7,7 +7,7 @@ export const grabCat = () => (dispatch) => {
   axios
     .get('https://thatcopy.pw/catapi/rest/')
     .then((res) => {
-      console.log(res);
+      dispatch(gotCat(res.data.id, res.data.url));
     })
     .catch((err) => {
       alert(`Hey man your axios call didn't work`);
@@ -16,6 +16,5 @@ export const grabCat = () => (dispatch) => {
 };
 
 export const gotCat = (id, url) => {
-  console.log({ id, url });
-  return { type: GOT_CAT, id, url };
+  return { type: GOT_CAT, payload: { id, url } };
 };
