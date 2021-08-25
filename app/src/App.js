@@ -1,8 +1,13 @@
-import './App.css';
-import Container from '@material-ui/core/Container';
-import { Paper, Card, Button, Grid } from '@material-ui/core';
-
-import { makeStyles } from '@material-ui/core';
+import {
+  Container,
+  makeStyles,
+  Paper,
+  Card,
+  Button,
+  Grid,
+} from '@material-ui/core';
+import { connect } from 'react-redux';
+import { grabAxolotl } from './actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,8 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function App() {
+function App(props) {
   const classes = useStyles();
+  console.log(props.axolotols);
 
   return (
     <div className={classes.root}>
@@ -28,7 +34,14 @@ function App() {
               <h1>Generate Your Own Axolotl!</h1>
             </Grid>
             <Grid item xs={12} md={12} lg={12} xl={12}>
-              <Button variant='contained' color='secondary'>
+              <Button
+                variant='contained'
+                color='secondary'
+                onClick={() => {
+                  console.log('the button is being clicked');
+                  grabAxolotl();
+                }}
+              >
                 {'==> Click Me <=='}
               </Button>
             </Grid>
@@ -42,4 +55,11 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    axolotols: state.axolotols,
+  };
+};
+
+export default connect(mapStateToProps, { grabAxolotl })(App);
